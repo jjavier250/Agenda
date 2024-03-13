@@ -37,9 +37,23 @@ android {
 
 dependencies {
 
+
+    implementation("com.applandeo:material-calendar-view:1.8.0")
+
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+    //SQLite
+    val sqlite_version = "2.4.0"
+
+    // Java language implementation
+    //implementation("androidx.sqlite:sqlite:$sqlite_version")
+
+    // Kotlin
+    implementation("androidx.sqlite:sqlite-ktx:$sqlite_version")
+
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("com.google.android.material:material:1.11.0")
+    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
