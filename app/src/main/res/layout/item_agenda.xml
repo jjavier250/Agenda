@@ -13,7 +13,7 @@
         />
 
     <TextView
-        android:id="@+id/txttarea"
+        android:id="@+id/txtnombre"
         android:layout_width="310dp"
         android:layout_height="50dp"
         android:text="nombre"
