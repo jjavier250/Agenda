@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Agenda</string>
     <string name="titulo">Agenda</string>
-    <string name="insertar">insertar datos</string>
+    <string name="insertar">Insertar Datos</string>
+    <string name="modificar">Modificar Datos</string>
     <string name="nombre">Nombre</string>
     <string name="apellidos">Apellidos</string>
     <string name="direccion">Dirección</string>
@@ -9,4 +10,5 @@
     <string name="fechanacimiento">Fecha nacimiento</string>
     <string name="botonañadir">Añadir</string>
     <string name="botoncancelar">Cancelar</string>
+    <string name="botonmodificar">Modificar</string>
 </resources>

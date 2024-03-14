@@ -33,12 +33,15 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+
+
+    buildFeatures{
+        viewBinding=true
+    }
 }
 
 dependencies {
 
-
-    implementation("com.applandeo:material-calendar-view:1.8.0")
 
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     //SQLite

@@ -11,7 +11,7 @@
         android:id="@+id/cabecera"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/insertar"
+        android:text="@string/modificar"
         android:textColor="@color/purple_700"
         android:textSize="30dp"
         android:textStyle="bold"
@@ -19,6 +19,25 @@
         >
 
     </TextView>
+
+
+    <ImageView
+        android:id="@+id/imgfavorito"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/baseline_favorite_24"
+        android:visibility="visible"
+        >
+    </ImageView>
+
+    <ImageView
+        android:id="@+id/imgfavoritoactivado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#DC0E0E"
+        android:visibility="invisible"
+        app:srcCompat="@drawable/baseline_favorite_24"></ImageView>
+
 
 
     <LinearLayout
@@ -168,16 +187,22 @@
         </EditText>
     </LinearLayout>
 
+
+
+
+
+
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btngrabatarea"
+            android:id="@+id/btnmodificar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/botonañadir"
+            android:text="@string/botonmodificar"
             android:textColor="#FFFFFF"
             android:textAlignment="center"
             android:backgroundTint="@color/purple_700"
