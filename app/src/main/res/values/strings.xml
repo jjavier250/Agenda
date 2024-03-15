@@ -2,7 +2,7 @@
     <string name="app_name">Agenda</string>
     <string name="titulo">Agenda</string>
     <string name="insertar">Insertar Datos</string>
-    <string name="modificar">Modificar Datos</string>
+    <string name="modificar">Modificar Datos/ Llamar</string>
     <string name="nombre">Nombre</string>
     <string name="apellidos">Apellidos</string>
     <string name="direccion">Dirección</string>

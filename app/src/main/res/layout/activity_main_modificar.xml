@@ -25,6 +25,7 @@
         android:id="@+id/imgfavorito"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         app:srcCompat="@drawable/baseline_favorite_24"
         android:visibility="visible"
         >
@@ -34,6 +35,7 @@
         android:id="@+id/imgfavoritoactivado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:background="#DC0E0E"
         android:visibility="invisible"
         app:srcCompat="@drawable/baseline_favorite_24"></ImageView>
@@ -224,6 +226,23 @@
 
 
     </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnllamar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="46dp"
+        android:src="@drawable/telefonomas"
+        app:backgroundTint="#4CAF50"
+        android:layout_gravity="bottom|center"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnwass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_favorite_24"
+        app:backgroundTint="#FFEB3B"
+        android:layout_gravity="bottom|center"/>
 
 
 

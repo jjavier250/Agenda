@@ -1,7 +1,9 @@
 package com.example.agenda.activities
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Toast
 import com.example.agenda.R
 import com.example.agenda.activities.provider.Agenda
@@ -19,6 +21,10 @@ class MainActivityinsertar : AppCompatActivity() {
 
         binding = ActivityMainActivityinsertarBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        //flechita para ir para atras va asociada con : +++++   para retroceder
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        //++++
 
 
         //  +++++++++++++    grabar insertar datos ++++++++++++++++++++++++++++
@@ -44,5 +50,17 @@ class MainActivityinsertar : AppCompatActivity() {
         }
 
         }
+    // Flechita de retroceder para atras y opcion de compartir
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                // Aquí maneja la acción del botón de retroceso
+                finish() // Esta es una forma de retroceder la pantalla
+                true
+            }
+
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
 
     }

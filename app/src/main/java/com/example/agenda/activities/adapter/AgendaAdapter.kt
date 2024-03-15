@@ -1,5 +1,7 @@
 package com.example.agenda.activities.adapter
 
+import android.content.Context
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,11 +11,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agenda.R
 import com.example.agenda.activities.provider.Agenda
+import com.example.agenda.activities.utils.Sesion
+
 
 // funciones lambda que que paso el click de la fila y de la papelera. Al onclick lo puedo llamar como me de la gana: en este caso onclickpapelera
 class AgendaAdapter(private var dataSet: List<Agenda> =listOf(), val onClickListener:(Int)->Unit,
                     private val onclickpapelera:(position:Int)->Unit) :
     RecyclerView.Adapter<AgendaAdapter.MiViewHolder>() {
+
 
     class MiViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         val txtnombre: TextView
@@ -43,6 +48,14 @@ class AgendaAdapter(private var dataSet: List<Agenda> =listOf(), val onClickList
         // En el MainActivity recogemos las llamdas así :   adapter = AgendaAdapter(listaAgenda, { llamarPantallaClick(it) }, {llamarPapeleraClick(it)})
         viewHolder.itemView.setOnClickListener{onClickListener(position)} // capturamos el click del control
         viewHolder.imagenpapelera.setOnClickListener{onclickpapelera(position)} // capturamos el click del papelera
+
+        val sesion: Sesion = Sesion(viewHolder.itemView.context)
+
+         //si es el de la sesion el favorito le cambio la linea de color
+        if(dataSet[position].nombre.toString()==sesion.leerDatosSesion())
+          {
+            viewHolder.itemView.setBackgroundColor(Color.CYAN)
+           }
 
 
         val agenda:Agenda = dataSet[position]

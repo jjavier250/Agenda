@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:appcompat="http://schemas.android.com/apk/res-auto">
 
-    <item android:title="buscar"
-        android:id="@+id/menu_buscar"
-        android:icon="@drawable/buscar"
-        appcompat:actionViewClass="androidx.appcompat.widget.SearchView"
+    <item
+        android:id="@+id/menu_compartir"
+        android:title="compartir"
+        android:icon="@drawable/baseline_call_split_24"
         app:showAsAction="collapseActionView|always"/>
 
 </menu>

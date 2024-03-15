@@ -18,7 +18,7 @@ class Sesion(context: Context) {
     fun guardarDatosSesion(contacto:String){
         val editor = sharedPref?.edit()
         if (editor != null) {
-            editor.putString(PERSONA_FAVORITA, contacto)
+            editor.putString(PERSONA_FAVORITA, contacto) //PERSONA_FAVORITA es la clave puedo guardar mas info con distintas claves
             editor.apply()
         }
 

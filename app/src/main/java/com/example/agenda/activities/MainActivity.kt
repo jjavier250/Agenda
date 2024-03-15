@@ -9,6 +9,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.agenda.R
@@ -67,16 +68,6 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        // ++++++++   MENU BUSCAR  +++++++++++++++
-         fun onCreateOptionsMenu(menu: Menu?): Boolean {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            menuInflater.inflate(R.menu.main_menu, menu)
-            //llamamos a la funcion para buscar
-            buscarContacto(menu?.findItem(R.id.menu_buscar))
-
-            return true
-        }
-
     }
 
     private fun llamarPantallaClick(position: Int) {
@@ -91,12 +82,51 @@ class MainActivity : AppCompatActivity() {
 
     private fun llamarPapeleraClick(it: Int) {
 
-        var agenda: Agenda = listaAgenda[it]
-        agendaDao.delete(agenda)
-        listaAgenda.removeAt(it)
-        adapter.notifyDataSetChanged()
+        // Crear AlertDialog
+        val builder = AlertDialog.Builder(this)
+
+        // Establecer el título y el mensaje
+        builder.setTitle("Eleminar contacto")
+        builder.setMessage("¿Esta seguro que desea eliminar el contacto?")
+        builder.setPositiveButton("Aceptar") { dialog, which ->
+            // Acción a realizar cuando se presiona el botón Aceptar
+
+            var agenda: Agenda = listaAgenda[it]
+            agendaDao.delete(agenda)
+            listaAgenda.removeAt(it)
+            adapter.notifyDataSetChanged()
+
+            Toast.makeText(this, "contacto borrado", Toast.LENGTH_SHORT).show()
+            onResume()
+
+            dialog.dismiss()
+        }
+
+        // Agregar botón negativo
+        builder.setNegativeButton("Cancelar") { dialog, which ->
+            // Acción a realizar cuando se presiona el botón Cancelar
+            // Por ejemplo, puedes realizar alguna acción o cerrar el diálogo
+            dialog.dismiss()
+        }
+
+        // Mostrar AlertDialog
+        val dialog: AlertDialog = builder.create()
+        dialog.show()
+
     }
 
+
+
+
+    // ++++++++   MENU BUSCAR  +++++++++++++++
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.main_menu, menu)
+        //llamamos a la funcion para buscar
+        buscarContacto(menu?.findItem(R.id.menu_buscar))
+
+        return true
+    }
 
     private fun buscarContacto(searchItem: MenuItem?) {
         if (searchItem != null) {
@@ -104,14 +134,18 @@ class MainActivity : AppCompatActivity() {
 
             searchView.setOnQueryTextListener(object : androidx.appcompat.widget.SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
-                    if (query != null) {
-                        //searchSuperheroes(query)
-                    }
-                    return true
+                    return false
                 }
 
                 override fun onQueryTextChange(query: String?): Boolean {
-                    return false
+                    if (query != null) {
+                        // hacer algo
+
+                        listaAgenda = agendaDao.findAlllike(query).toMutableList()
+
+                        adapter.updateData(listaAgenda)
+                    }
+                    return true
                 }
             })
         }

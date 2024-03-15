@@ -63,14 +63,7 @@ class AgendaDao (context:Context){
     }
 
 
-    fun deleteRealizados() {
-        val db = databaseManager.writableDatabase
 
-        val deletedRows = db.delete(Agenda.TABLE_NAME, "hecho=true", null)
-        Log.i("DATABASE", "borrado las check,realizadas")
-
-        db.close()
-    }
     @SuppressLint("Range")
     fun find(id: Int): Agenda? {
         val db = databaseManager.writableDatabase
@@ -136,5 +129,42 @@ class AgendaDao (context:Context){
         db.close()
 
         return list
+    }
+
+
+    @SuppressLint("Range")
+    fun findAlllike(nombre:String): List<Agenda> {
+        val db = databaseManager.writableDatabase
+
+        val cursor = db.query(
+            Agenda.TABLE_NAME,
+            Agenda.COLUMN_NAMES,
+            "${Agenda.COLUMN_NAME_NOMBRE} like '%$nombre%'",
+            null,
+            null,
+            null,
+            null
+        )
+
+        var list: MutableList<Agenda> = mutableListOf()
+
+        while (cursor.moveToNext()) {
+            val id = cursor.getInt(cursor.getColumnIndex(DatabaseManager.COLUMN_NAME_ID))
+            val nombre = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_NOMBRE))
+            val apellidos = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_APELLIDOS))
+            val direccion = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_DIRECCION))
+            val telefono = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_TELEFONO))
+            val fnacimiento=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_FNACIMIENTO))
+
+            val agenda: Agenda = Agenda(id, nombre, apellidos,direccion,telefono,fnacimiento)
+            list.add(agenda)
+
+        }
+
+        cursor.close()
+        db.close()
+
+        return list
+
     }
 }
