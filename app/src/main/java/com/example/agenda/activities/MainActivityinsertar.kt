@@ -29,17 +29,33 @@ class MainActivityinsertar : AppCompatActivity() {
 
         //  +++++++++++++    grabar insertar datos ++++++++++++++++++++++++++++
         binding.btngrabatarea.setOnClickListener(){
+            var pasa:Boolean=false
             // Insertar
             if (!binding.txtnombre.text.toString().isEmpty()) {
-                var agenda: Agenda = Agenda(-1, binding.txtnombre.text.toString(), binding.txtapellidos.text.toString(),binding.txtdireccion.text.toString(),binding.txttelefono.text.toString(),binding.txtfechanacimiento.text.toString())
-                agendaDao.insert(agenda)
-
-                finish()
+                pasa=true
             }
             else
             {
+                pasa=false
                 Toast.makeText(this, "El nombre no puede estar vacío", Toast.LENGTH_SHORT).show()
             }
+
+            if (!binding.txttelefono.text.toString().isEmpty()){
+                pasa=true
+            }
+            else{
+                pasa=false
+                Toast.makeText(this, "El telefono no puede estar vacío", Toast.LENGTH_SHORT).show()
+            }
+
+            if(pasa==true){
+                var agenda: Agenda = Agenda(-1, binding.txtnombre.text.toString(), binding.txtapellidos.text.toString(),binding.txtdireccion.text.toString(),binding.txttelefono.text.toString(),binding.txtfechanacimiento.text.toString(),binding.txtcorreo.text.toString())
+                agendaDao.insert(agenda)
+
+                finish()
+
+            }
+
 
         }
 

@@ -9,7 +9,7 @@ class DatabaseManager (context: Context) : SQLiteOpenHelper(context, DATABASE_NA
 
     companion object {
         const val DATABASE_NAME = "agenda.db"
-        const val DATABASE_VERSION = 1
+        const val DATABASE_VERSION = 2
         const val COLUMN_NAME_ID = "id"
 
         private const val SQL_CREATE_TABLE =
@@ -19,7 +19,8 @@ class DatabaseManager (context: Context) : SQLiteOpenHelper(context, DATABASE_NA
                     "${Agenda.COLUMN_NAME_APELLIDOS} TEXT," +
                     "${Agenda.COLUMN_NAME_DIRECCION} TEXT," +
                     "${Agenda.COLUMN_NAME_TELEFONO} TEXT," +
-                    "${Agenda.COLUMN_NAME_FNACIMIENTO} TEXT)"
+                    "${Agenda.COLUMN_NAME_FNACIMIENTO} TEXT," +
+                    "${Agenda.COLUMN_NAME_CORREO} TEXT)"
 
         private const val SQL_DELETE_TABLE = "DROP TABLE IF EXISTS ${Agenda.TABLE_NAME}"
     }

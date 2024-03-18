@@ -18,6 +18,7 @@ class AgendaDao (context:Context){
         values.put(Agenda.COLUMN_NAME_DIRECCION, agenda.direccion)
         values.put(Agenda.COLUMN_NAME_TELEFONO,agenda.telefono)
         values.put(Agenda.COLUMN_NAME_FNACIMIENTO,agenda.fnacimiento)
+        values.put(Agenda.COLUMN_NAME_CORREO,agenda.correo)
 
         var newRowId = db.insert(Agenda.TABLE_NAME, null, values)
         Log.i("DATABASE", "nuevo id: $newRowId")
@@ -37,6 +38,8 @@ class AgendaDao (context:Context){
         values.put(Agenda.COLUMN_NAME_DIRECCION, agenda.direccion)
         values.put(Agenda.COLUMN_NAME_TELEFONO,agenda.telefono)
         values.put(Agenda.COLUMN_NAME_FNACIMIENTO,agenda.fnacimiento)
+        values.put(Agenda.COLUMN_NAME_CORREO,agenda.correo)
+
 
         var updatedRows = db.update(Agenda.TABLE_NAME, values, "${DatabaseManager.COLUMN_NAME_ID} = ${agenda.id}", null)
         Log.i("DATABASE", "Updated records: $updatedRows")
@@ -87,8 +90,9 @@ class AgendaDao (context:Context){
             val direccion = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_DIRECCION))
             val telefono = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_TELEFONO))
             val fnacimiento=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_FNACIMIENTO))
+            val correo=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_CORREO))
 
-            agenda = Agenda(id, nombre,apellidos ,direccion,telefono,fnacimiento)
+            agenda = Agenda(id, nombre,apellidos ,direccion,telefono,fnacimiento,correo)
         }
 
         cursor.close()
@@ -120,8 +124,9 @@ class AgendaDao (context:Context){
             val direccion = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_DIRECCION))
             val telefono = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_TELEFONO))
             val fnacimiento=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_FNACIMIENTO))
+            val correo=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_CORREO))
 
-            val agenda: Agenda = Agenda(id, nombre, apellidos,direccion,telefono,fnacimiento)
+            val agenda: Agenda = Agenda(id, nombre, apellidos,direccion,telefono,fnacimiento,correo)
             list.add(agenda)
         }
 
@@ -155,8 +160,9 @@ class AgendaDao (context:Context){
             val direccion = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_DIRECCION))
             val telefono = cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_TELEFONO))
             val fnacimiento=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_FNACIMIENTO))
+            val correo=cursor.getString(cursor.getColumnIndex(Agenda.COLUMN_NAME_CORREO))
 
-            val agenda: Agenda = Agenda(id, nombre, apellidos,direccion,telefono,fnacimiento)
+            val agenda: Agenda = Agenda(id, nombre, apellidos,direccion,telefono,fnacimiento,correo)
             list.add(agenda)
 
         }

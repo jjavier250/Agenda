@@ -3,7 +3,7 @@ package com.example.agenda.activities.provider
 import com.example.agenda.activities.utils.DatabaseManager
 
 
-class Agenda (var id: Int, var nombre: String,var apellidos:String ,var direccion:String,var telefono:String,var fnacimiento:String) {
+class Agenda (var id: Int, var nombre: String,var apellidos:String ,var direccion:String,var telefono:String,var fnacimiento:String,var correo:String) {
 
     companion object {
         const val TABLE_NAME = "agenda"
@@ -12,6 +12,7 @@ class Agenda (var id: Int, var nombre: String,var apellidos:String ,var direccio
         const val COLUMN_NAME_DIRECCION = "direccion"
         const val COLUMN_NAME_TELEFONO = "telefono"
         const val COLUMN_NAME_FNACIMIENTO = "fnacimiento"
+        const val COLUMN_NAME_CORREO = "correo"
 
 
         val COLUMN_NAMES = arrayOf(
@@ -20,7 +21,8 @@ class Agenda (var id: Int, var nombre: String,var apellidos:String ,var direccio
             COLUMN_NAME_APELLIDOS,
             COLUMN_NAME_DIRECCION,
             COLUMN_NAME_TELEFONO,
-            COLUMN_NAME_FNACIMIENTO
+            COLUMN_NAME_FNACIMIENTO,
+            COLUMN_NAME_CORREO
         )
     }
 

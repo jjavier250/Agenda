@@ -47,6 +47,7 @@ class MainActivityModificar : AppCompatActivity() {
         binding.txtdireccion.setText(agenda.direccion)
         binding.txttelefono.setText(agenda.telefono)
         binding.txtfechanacimiento.setText(agenda.fnacimiento)
+        binding.txtcorreo.setText(agenda.correo)
 
         // miramos si es favorito para ponerle el corazón marcado como tal
 
@@ -85,7 +86,7 @@ class MainActivityModificar : AppCompatActivity() {
             val intent = Intent(Intent.ACTION_SEND)
             intent.type = "text/plain"
             intent.putExtra(Intent.EXTRA_TEXT, mensaje)
-            intent.putExtra("jid", "$numeroTelefono@s.whatsapp.net") // Agregar el número de teléfono con el prefijo s.whatsapp.net
+            intent.putExtra(agenda.nombre, "$numeroTelefono@s.whatsapp.net") // Agregar el número de teléfono con el prefijo s.whatsapp.net
 
             // Verificar si WhatsApp está instalado en el dispositivo
             if (intent.resolveActivity(packageManager) != null) {
@@ -106,16 +107,40 @@ class MainActivityModificar : AppCompatActivity() {
         // ++++++++++++++++++++++  Boton de grabar modificación ++++++++++++++++++
 
         binding.btnmodificar.setOnClickListener(){
-            agenda.nombre = binding.txtnombre.text.toString()
-            agenda.apellidos=binding.txtapellidos.text.toString()
-            agenda.direccion=binding.txtdireccion.text.toString()
-            agenda.telefono=binding.txttelefono.text.toString()
-            agenda.fnacimiento=binding.txtfechanacimiento.text.toString()
+            var pasa:Boolean=false
 
-            agendaDao.update(agenda)
+            if(!binding.txtnombre.text.toString().isEmpty()){
+                pasa=true
+            }
+            else{
+                pasa=false
+                Toast.makeText(this, "El nombre no puede estar vacío", Toast.LENGTH_SHORT).show()
+            }
 
-            // fin parte de actualizar
-            finish()
+            if(!binding.txttelefono.text.toString().isEmpty()){
+                pasa=true
+            }
+            else{
+                pasa=false
+                Toast.makeText(this, "El telefono no puede estar vacío", Toast.LENGTH_SHORT).show()
+            }
+
+            if (pasa==true){
+
+                agenda.nombre = binding.txtnombre.text.toString()
+                agenda.apellidos=binding.txtapellidos.text.toString()
+                agenda.direccion=binding.txtdireccion.text.toString()
+                agenda.telefono=binding.txttelefono.text.toString()
+                agenda.fnacimiento=binding.txtfechanacimiento.text.toString()
+                agenda.correo=binding.txtcorreo.text.toString()
+
+                agendaDao.update(agenda)
+
+                // fin parte de actualizar
+                finish()
+
+            }
+
         }
 
         // boton para imagen corazon negro
