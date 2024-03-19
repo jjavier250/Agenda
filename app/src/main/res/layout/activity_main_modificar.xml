@@ -43,6 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:src="@android:drawable/ic_dialog_email"
+        android:tooltipText="Compartir texto"
         app:backgroundTint="#FFEB3B" />
 
     <LinearLayout
@@ -213,6 +214,7 @@
             android:backgroundTint="@color/purple_700"
             android:text="@string/envcorr"
             android:textAlignment="center"
+            android:tooltipText="enviar correo"
             android:textColor="#FFFFFF">
 
         </androidx.appcompat.widget.AppCompatButton>
@@ -261,6 +263,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center"
         android:src="@drawable/telefonomas"
+        android:tooltipText="realizar llamada"
         app:backgroundTint="#4CAF50" />
 
 
