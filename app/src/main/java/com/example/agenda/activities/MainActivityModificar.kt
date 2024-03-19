@@ -67,6 +67,13 @@ class MainActivityModificar : AppCompatActivity() {
         }
 
 
+        binding.btnenvcorreo.setOnClickListener {
+            // Crea un Intent con la acción ACTION_SENDTO para abrir la aplicación de correo
+            val intent = Intent(Intent.ACTION_SENDTO).apply {
+                data = Uri.parse("mailto:${binding.txtcorreo.text.toString()}")
+            }
+            }
+
 
         // ++++++++++++++++++   boton flotante de llamar y llamada de telefono   ++++++++++++++++++++
         binding.btnllamar.setOnClickListener(){
@@ -123,6 +130,15 @@ class MainActivityModificar : AppCompatActivity() {
             else{
                 pasa=false
                 Toast.makeText(this, "El telefono no puede estar vacío", Toast.LENGTH_SHORT).show()
+            }
+
+            if(binding.txttelefono.text.length<9){
+                pasa=false
+                Toast.makeText(this, "El telefono no coincide con su longitud", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                pasa=true
             }
 
             if (pasa==true){

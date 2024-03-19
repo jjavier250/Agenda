@@ -13,5 +13,6 @@
     <string name="botoncancelar">Cancelar</string>
     <string name="botonmodificar">Modificar</string>
     <string name="botonfoto">Tomar foto</string>
+    <string name="envcorr">Correo</string>
 
 </resources>

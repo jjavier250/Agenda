@@ -48,6 +48,15 @@ class MainActivityinsertar : AppCompatActivity() {
                 Toast.makeText(this, "El telefono no puede estar vacío", Toast.LENGTH_SHORT).show()
             }
 
+            if(binding.txttelefono.text.length<9){
+                pasa=false
+                Toast.makeText(this, "El telefono no coincide con su longitud", Toast.LENGTH_SHORT).show()
+            }
+            else
+            {
+                pasa=true
+            }
+
             if(pasa==true){
                 var agenda: Agenda = Agenda(-1, binding.txtnombre.text.toString(), binding.txtapellidos.text.toString(),binding.txtdireccion.text.toString(),binding.txttelefono.text.toString(),binding.txtfechanacimiento.text.toString(),binding.txtcorreo.text.toString())
                 agendaDao.insert(agenda)

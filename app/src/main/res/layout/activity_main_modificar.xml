@@ -202,9 +202,22 @@
             android:id="@+id/txtcorreo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:width="400dp"
+            android:width="320dp"
             android:inputType="textEmailAddress"
             android:maxLength="40"></EditText>
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnenvcorreo"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:backgroundTint="@color/purple_700"
+            android:text="@string/envcorr"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF">
+
+        </androidx.appcompat.widget.AppCompatButton>
+
+
     </LinearLayout>
 
 
